@@ -2,7 +2,7 @@
   
     
         "post0": {
-            "title": "Title",
+            "title": "EDA",
             "content": "import pandas as pd import numpy as np import matplotlib.pyplot as plt . pd.__version__ . &#39;1.4.2&#39; . np.__version__ . &#39;1.21.5&#39; . kernel .",
             "url": "https://apayal.github.io/capstone_project/2022/07/01/eda.html",
             "relUrl": "/2022/07/01/eda.html",
