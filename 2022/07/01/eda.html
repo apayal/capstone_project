@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -593,10 +593,125 @@ dtype: int64</pre>
 </div>
     
 
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    15964
+1    13659
+3      323
+0       54
+Name: MARRIAGE, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#check other categories as well </span>
+<span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    18112
+1    11888
+Name: SEX, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># again a couple of unknown values of 6 and 0,</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    14030
+1    10585
+3     4917
+5      280
+4      123
+6       51
+0       14
+Name: EDUCATION, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>At the moment the Education column has 3 values - 4,5,6 which stand for other, unknown and unknown. So this 3 values need to be grouped together as 1 value that stands for unknown. The columns Sex need to be realigned as binary, 0 and 1 instead of the current 1 and 2.
-The maritable status column can be one hot encoded so that we have a 1 less column than there are option i.e an IsMarried columns, encoded as 0/1 meaning married or not married, an are they single column, encoded as 0/1 again single or not single, and anything which has 0 for both these columns is assumed to be others so there is no need to do another computation for a third column as others such as divorced is inferred.</p>
+<p>At the moment the Education column has 2 values - 5,6 which both stand for unknown and unknown.  So these 2 values need to be grouped together as 1 value that stands for unknown. Also value 4 is a little ambigious as it could mean graduated from 'other' institution or is similar to unknown - as in we don't know thier education status.</p>
+<p>The columns Sex need to be realigned as binary, 0 and 1 instead of the current 1 and 2.
+The marriage status column also has an extra value of 0 which is not mentioned in the data description. We will group it together with the others value as we don't know what it stands for. In addition the column can be one hot encoded so that we have a 1 less column than there are options i.e an IsMarried columns, encoded as 0/1 meaning married or not married, similarly an are they single column, encoded as 0/1 again single or not single, and anything which has 0 for both these columns is assumed to be others so there is no need to do another computation for a third column as others such as divorced is inferred.</p>
 
 </div>
 </div>
