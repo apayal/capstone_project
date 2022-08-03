@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Title | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://apayal.github.io/capstone_project/2022/08/02/modelling.html" />
+<meta property="og:url" content="https://apayal.github.io/capstone_project/2022/08/02/modelling.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-02T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Title" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-02T00:00:00-05:00","datePublished":"2022-08-02T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Title","mainEntityOfPage":{"@type":"WebPage","@id":"https://apayal.github.io/capstone_project/2022/08/02/modelling.html"},"url":"https://apayal.github.io/capstone_project/2022/08/02/modelling.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/capstone_project/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://apayal.github.io/capstone_project/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/capstone_project/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/capstone_project/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/capstone_project/about/">About Me</a><a class="page-link" href="/capstone_project/search/">Search</a><a class="page-link" href="/capstone_project/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-02T00:00:00-05:00" itemprop="datePublished">
+        Aug 2, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/apayal/capstone_project/tree/master/_notebooks/modelling.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/capstone_project/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/apayal/capstone_project/master?filepath=_notebooks%2Fmodelling.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/capstone_project/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/apayal/capstone_project/blob/master/_notebooks/modelling.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/capstone_project/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fapayal%2Fcapstone_project%2Fblob%2Fmaster%2F_notebooks%2Fmodelling.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/capstone_project/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/modelling.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Modelling">Modelling<a class="anchor-link" href="#Modelling"> </a></h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1">#modelling</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\Robin\Downloads\capstone_project\_data\credit-df-dataset-cleaned.csv&#39;</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will be using log transformed data as</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_log</span><span class="o">=</span><span class="n">credit_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:</span><span class="mi">22</span><span class="p">]</span>
+<span class="n">credit_df_log</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PAY_1</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>PAY_5</th>
+      <th>PAY_6</th>
+      <th>BILL_AMT1</th>
+      <th>BILL_AMT2</th>
+      <th>BILL_AMT3</th>
+      <th>BILL_AMT4</th>
+      <th>BILL_AMT5</th>
+      <th>BILL_AMT6</th>
+      <th>PAY_AMT1</th>
+      <th>PAY_AMT2</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>3913</td>
+      <td>3102</td>
+      <td>689</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>689</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2682</td>
+      <td>1725</td>
+      <td>2682</td>
+      <td>3272</td>
+      <td>3455</td>
+      <td>3261</td>
+      <td>0</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>29239</td>
+      <td>14027</td>
+      <td>13559</td>
+      <td>14331</td>
+      <td>14948</td>
+      <td>15549</td>
+      <td>1518</td>
+      <td>1500</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>46990</td>
+      <td>48233</td>
+      <td>49291</td>
+      <td>28314</td>
+      <td>28959</td>
+      <td>29547</td>
+      <td>2000</td>
+      <td>2019</td>
+      <td>1200</td>
+      <td>1100</td>
+      <td>1069</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8617</td>
+      <td>5670</td>
+      <td>35835</td>
+      <td>20940</td>
+      <td>19146</td>
+      <td>19131</td>
+      <td>2000</td>
+      <td>36681</td>
+      <td>10000</td>
+      <td>9000</td>
+      <td>689</td>
+      <td>679</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29995</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>188948</td>
+      <td>192815</td>
+      <td>208365</td>
+      <td>88004</td>
+      <td>31237</td>
+      <td>15980</td>
+      <td>8500</td>
+      <td>20000</td>
+      <td>5003</td>
+      <td>3047</td>
+      <td>5000</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>29996</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1683</td>
+      <td>1828</td>
+      <td>3502</td>
+      <td>8979</td>
+      <td>5190</td>
+      <td>0</td>
+      <td>1837</td>
+      <td>3526</td>
+      <td>8998</td>
+      <td>129</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29997</th>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3565</td>
+      <td>3356</td>
+      <td>2758</td>
+      <td>20878</td>
+      <td>20582</td>
+      <td>19357</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22000</td>
+      <td>4200</td>
+      <td>2000</td>
+      <td>3100</td>
+    </tr>
+    <tr>
+      <th>29998</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>-1645</td>
+      <td>78379</td>
+      <td>76304</td>
+      <td>52774</td>
+      <td>11855</td>
+      <td>48944</td>
+      <td>85900</td>
+      <td>3409</td>
+      <td>1178</td>
+      <td>1926</td>
+      <td>52964</td>
+      <td>1804</td>
+    </tr>
+    <tr>
+      <th>29999</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>47929</td>
+      <td>48905</td>
+      <td>49764</td>
+      <td>36535</td>
+      <td>32428</td>
+      <td>15313</td>
+      <td>2078</td>
+      <td>1800</td>
+      <td>1430</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+    </tr>
+  </tbody>
+</table>
+<p>30000 rows × 18 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">credit_df_log</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>c:\Users\Robin\anaconda3\lib\site-packages\pandas\core\internals\blocks.py:402: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+c:\Users\Robin\anaconda3\lib\site-packages\pandas\core\internals\blocks.py:402: RuntimeWarning: invalid value encountered in log
+  result = func(self.values, **kwargs)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#     plt.figure()</span>
+<span class="c1">#     plt.title(f&#39;Feature: {col}&#39;)</span>
+<span class="c1">#     sns.histplot(c[col],bins=30)</span>
+<span class="c1">#     plt.show()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;BILL_AMT1&#39;</span><span class="p">])</span>
+<span class="c1"># seems to be more noramlly distributed now</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;AxesSubplot:xlabel=&#39;BILL_AMT1&#39;, ylabel=&#39;Count&#39;&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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" />
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">demo_data</span><span class="o">=</span><span class="n">credit_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">log_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">demo_data</span><span class="p">,</span><span class="n">c</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>LIMIT_BAL</th>
+      <th>SEX</th>
+      <th>AGE</th>
+      <th>PAY_1</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>PAY_5</th>
+      <th>PAY_6</th>
+      <th>...</th>
+      <th>BILL_AMT3</th>
+      <th>BILL_AMT4</th>
+      <th>BILL_AMT5</th>
+      <th>BILL_AMT6</th>
+      <th>PAY_AMT1</th>
+      <th>PAY_AMT2</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>20000</td>
+      <td>1</td>
+      <td>24</td>
+      <td>1.098612</td>
+      <td>1.098612</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>6.535241</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>6.535241</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>120000</td>
+      <td>1</td>
+      <td>26</td>
+      <td>-inf</td>
+      <td>1.098612</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.098612</td>
+      <td>...</td>
+      <td>7.894318</td>
+      <td>8.093157</td>
+      <td>8.147578</td>
+      <td>8.089789</td>
+      <td>-inf</td>
+      <td>6.907755</td>
+      <td>6.907755</td>
+      <td>6.907755</td>
+      <td>-inf</td>
+      <td>7.600902</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>90000</td>
+      <td>1</td>
+      <td>34</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>9.514806</td>
+      <td>9.570180</td>
+      <td>9.612333</td>
+      <td>9.651752</td>
+      <td>7.325149</td>
+      <td>7.313220</td>
+      <td>6.907755</td>
+      <td>6.907755</td>
+      <td>6.907755</td>
+      <td>8.517193</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>50000</td>
+      <td>1</td>
+      <td>37</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>10.805497</td>
+      <td>10.251112</td>
+      <td>10.273636</td>
+      <td>10.293737</td>
+      <td>7.600902</td>
+      <td>7.610358</td>
+      <td>7.090077</td>
+      <td>7.003065</td>
+      <td>6.974479</td>
+      <td>6.907755</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>50000</td>
+      <td>0</td>
+      <td>57</td>
+      <td>-inf</td>
+      <td>0.000000</td>
+      <td>-inf</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>10.486680</td>
+      <td>9.949416</td>
+      <td>9.859849</td>
+      <td>9.859065</td>
+      <td>7.600902</td>
+      <td>10.510014</td>
+      <td>9.210340</td>
+      <td>9.104980</td>
+      <td>6.535241</td>
+      <td>6.520621</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29995</th>
+      <td>29996</td>
+      <td>220000</td>
+      <td>0</td>
+      <td>39</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>12.247047</td>
+      <td>11.385138</td>
+      <td>10.349359</td>
+      <td>9.679093</td>
+      <td>9.047821</td>
+      <td>9.903488</td>
+      <td>8.517793</td>
+      <td>8.021913</td>
+      <td>8.517193</td>
+      <td>6.907755</td>
+    </tr>
+    <tr>
+      <th>29996</th>
+      <td>29997</td>
+      <td>150000</td>
+      <td>0</td>
+      <td>43</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>8.161090</td>
+      <td>9.102644</td>
+      <td>8.554489</td>
+      <td>-inf</td>
+      <td>7.515889</td>
+      <td>8.167919</td>
+      <td>9.104758</td>
+      <td>4.859812</td>
+      <td>-inf</td>
+      <td>-inf</td>
+    </tr>
+    <tr>
+      <th>29997</th>
+      <td>29998</td>
+      <td>30000</td>
+      <td>0</td>
+      <td>37</td>
+      <td>1.609438</td>
+      <td>1.386294</td>
+      <td>1.098612</td>
+      <td>-inf</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>7.922261</td>
+      <td>9.946451</td>
+      <td>9.932172</td>
+      <td>9.870809</td>
+      <td>-inf</td>
+      <td>-inf</td>
+      <td>9.998798</td>
+      <td>8.342840</td>
+      <td>7.600902</td>
+      <td>8.039157</td>
+    </tr>
+    <tr>
+      <th>29998</th>
+      <td>29999</td>
+      <td>80000</td>
+      <td>0</td>
+      <td>41</td>
+      <td>0.693147</td>
+      <td>-inf</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-inf</td>
+      <td>...</td>
+      <td>11.242481</td>
+      <td>10.873774</td>
+      <td>9.380505</td>
+      <td>10.798432</td>
+      <td>11.360939</td>
+      <td>8.134174</td>
+      <td>7.071573</td>
+      <td>7.563201</td>
+      <td>10.877368</td>
+      <td>7.497762</td>
+    </tr>
+    <tr>
+      <th>29999</th>
+      <td>30000</td>
+      <td>50000</td>
+      <td>0</td>
+      <td>46</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>10.815047</td>
+      <td>10.506026</td>
+      <td>10.386778</td>
+      <td>9.636457</td>
+      <td>7.639161</td>
+      <td>7.495542</td>
+      <td>7.265430</td>
+      <td>6.907755</td>
+      <td>6.907755</td>
+      <td>6.907755</td>
+    </tr>
+  </tbody>
+</table>
+<p>30000 rows × 22 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span><span class="o">=</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span>
+<span class="n">X</span><span class="o">=</span><span class="n">credit_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span><span class="n">confusion_matrix</span><span class="p">,</span><span class="n">precision_score</span><span class="p">,</span><span class="n">recall_score</span><span class="p">,</span><span class="n">plot_confusion_matrix</span><span class="p">,</span><span class="n">classification_report</span>
+
+
+    
+    
+<span class="n">model1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Accuracy Score for model1 test: &#39;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>              precision    recall  f1-score   support
+
+           0       1.00      0.78      0.88      5995
+           1       0.00      0.20      0.00         5
+
+    accuracy                           0.78      6000
+   macro avg       0.50      0.49      0.44      6000
+weighted avg       1.00      0.78      0.88      6000
+
+[[4679 1316]
+ [   4    1]]
+
+Accuracy Score for model1 test:  0.78
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>c:\Users\Robin\anaconda3\lib\site-packages\sklearn\base.py:443: UserWarning: X has feature names, but LogisticRegression was fitted without feature names
+  warnings.warn(
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.0007593014426727411</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.8099166666666666</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr</span><span class="o">=</span><span class="n">model1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's clear that there is a bias towards the not default class. We will need to balance out the class by upsampling to get better results.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">imblearn</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imblearn</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span> <span class="c1"># check it was installed properly</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.9.1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+
+<span class="n">oversample</span><span class="o">=</span><span class="n">SMOTE</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">oversample</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictors</span> <span class="o">=</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">credit_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span>
+<span class="n">oversample</span><span class="o">=</span><span class="n">SMOTE</span><span class="p">()</span>
+<span class="n">predictors</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">oversample</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">predictors</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">predictors</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">model2</span><span class="o">=</span><span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred2</span> <span class="o">=</span> <span class="n">model2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_pred2</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\Downloads\capstone_project\_notebooks\modelling.ipynb Cell 19</span> in <span class="ansi-cyan-fg">&lt;cell line: 3&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000028?line=0&#39;&gt;1&lt;/a&gt;</span> predictors = credit_df.loc[:, credit_df.columns != &#39;DEFAULT&#39;]
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000028?line=1&#39;&gt;2&lt;/a&gt;</span> oversample=SMOTE()
+<span class="ansi-green-intense-fg ansi-bold">----&gt; &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000028?line=2&#39;&gt;3&lt;/a&gt;</span> predictors,y = oversample.fit_resample(predictors,y)
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000028?line=4&#39;&gt;5&lt;/a&gt;</span> X_train, X_test, y_train, y_test = train_test_split(predictors, y, test_size=0.2, random_state=10)
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000028?line=5&#39;&gt;6&lt;/a&gt;</span> model2=LogisticRegression()
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\imblearn\base.py:77</span>, in <span class="ansi-cyan-fg">SamplerMixin.fit_resample</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y)</span>
+<span class="ansi-green-fg">     75</span> check_classification_targets(y)
+<span class="ansi-green-fg">     76</span> arrays_transformer = ArraysTransformer(X, y)
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 77</span> X, y, binarize_y = self._check_X_y(X, y)
+<span class="ansi-green-fg">     79</span> self.sampling_strategy_ = check_sampling_strategy(
+<span class="ansi-green-fg">     80</span>     self.sampling_strategy, y, self._sampling_type
+<span class="ansi-green-fg">     81</span> )
+<span class="ansi-green-fg">     83</span> output = self._fit_resample(X, y)
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\imblearn\base.py:132</span>, in <span class="ansi-cyan-fg">BaseSampler._check_X_y</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y, accept_sparse)</span>
+<span class="ansi-green-fg">    130</span>     accept_sparse = [&#34;csr&#34;, &#34;csc&#34;]
+<span class="ansi-green-fg">    131</span> y, binarize_y = check_target_type(y, indicate_one_vs_all=True)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 132</span> X, y = self._validate_data(X, y, reset=True, accept_sparse=accept_sparse)
+<span class="ansi-green-fg">    133</span> return X, y, binarize_y
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\base.py:596</span>, in <span class="ansi-cyan-fg">BaseEstimator._validate_data</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y, reset, validate_separately, **check_params)</span>
+<span class="ansi-green-fg">    594</span>         y = check_array(y, input_name=&#34;y&#34;, **check_y_params)
+<span class="ansi-green-fg">    595</span>     else:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 596</span>         X, y = check_X_y(X, y, **check_params)
+<span class="ansi-green-fg">    597</span>     out = X, y
+<span class="ansi-green-fg">    599</span> if not no_val_X and check_params.get(&#34;ensure_2d&#34;, True):
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\utils\validation.py:1092</span>, in <span class="ansi-cyan-fg">check_X_y</span><span class="ansi-blue-intense-fg ansi-bold">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
+<span class="ansi-green-fg">   1074</span> X = check_array(
+<span class="ansi-green-fg">   1075</span>     X,
+<span class="ansi-green-fg">   1076</span>     accept_sparse=accept_sparse,
+<span class="ansi-green-intense-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">   1087</span>     input_name=&#34;X&#34;,
+<span class="ansi-green-fg">   1088</span> )
+<span class="ansi-green-fg">   1090</span> y = _check_y(y, multi_output=multi_output, y_numeric=y_numeric, estimator=estimator)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1092</span> check_consistent_length(X, y)
+<span class="ansi-green-fg">   1094</span> return X, y
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\utils\validation.py:387</span>, in <span class="ansi-cyan-fg">check_consistent_length</span><span class="ansi-blue-intense-fg ansi-bold">(*arrays)</span>
+<span class="ansi-green-fg">    385</span> uniques = np.unique(lengths)
+<span class="ansi-green-fg">    386</span> if len(uniques) &gt; 1:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 387</span>     raise ValueError(
+<span class="ansi-green-fg">    388</span>         &#34;Found input variables with inconsistent numbers of samples: %r&#34;
+<span class="ansi-green-fg">    389</span>         % [int(l) for l in lengths]
+<span class="ansi-green-fg">    390</span>     )
+
+<span class="ansi-red-intense-fg ansi-bold">ValueError</span>: Found input variables with inconsistent numbers of samples: [30000, 46728]</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">knc</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>                         
+<span class="n">knc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">Y_pred_knc</span> <span class="o">=</span> <span class="n">knc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">accuracy_knc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">Y_pred_knc</span><span class="p">)</span>
+<span class="n">accuracy_knc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.7953333333333333</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">recall_score</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\Downloads\capstone_project\_notebooks\modelling.ipynb Cell 13</span> in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000009?line=0&#39;&gt;1&lt;/a&gt;</span> # recall_score(true labels, predicted labels)
+<span class="ansi-green-intense-fg ansi-bold">----&gt; &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000009?line=1&#39;&gt;2&lt;/a&gt;</span> recall_score(X_test_scaled, y_test)
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1901</span>, in <span class="ansi-cyan-fg">recall_score</span><span class="ansi-blue-intense-fg ansi-bold">(y_true, y_pred, labels, pos_label, average, sample_weight, zero_division)</span>
+<span class="ansi-green-fg">   1770</span> def recall_score(
+<span class="ansi-green-fg">   1771</span>     y_true,
+<span class="ansi-green-fg">   1772</span>     y_pred,
+<span class="ansi-green-intense-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">   1778</span>     zero_division=&#34;warn&#34;,
+<span class="ansi-green-fg">   1779</span> ):
+<span class="ansi-green-fg">   1780</span>     &#34;&#34;&#34;Compute the recall.
+<span class="ansi-green-fg">   1781</span> 
+<span class="ansi-green-fg">   1782</span>     The recall is the ratio ``tp / (tp + fn)`` where ``tp`` is the number of
+<span class="ansi-green-intense-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">   1899</span>     array([1. , 1. , 0.5])
+<span class="ansi-green-fg">   1900</span>     &#34;&#34;&#34;
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1901</span>     _, r, _, _ = precision_recall_fscore_support(
+<span class="ansi-green-fg">   1902</span>         y_true,
+<span class="ansi-green-fg">   1903</span>         y_pred,
+<span class="ansi-green-fg">   1904</span>         labels=labels,
+<span class="ansi-green-fg">   1905</span>         pos_label=pos_label,
+<span class="ansi-green-fg">   1906</span>         average=average,
+<span class="ansi-green-fg">   1907</span>         warn_for=(&#34;recall&#34;,),
+<span class="ansi-green-fg">   1908</span>         sample_weight=sample_weight,
+<span class="ansi-green-fg">   1909</span>         zero_division=zero_division,
+<span class="ansi-green-fg">   1910</span>     )
+<span class="ansi-green-fg">   1911</span>     return r
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1544</span>, in <span class="ansi-cyan-fg">precision_recall_fscore_support</span><span class="ansi-blue-intense-fg ansi-bold">(y_true, y_pred, beta, labels, pos_label, average, warn_for, sample_weight, zero_division)</span>
+<span class="ansi-green-fg">   1542</span> if beta &lt; 0:
+<span class="ansi-green-fg">   1543</span>     raise ValueError(&#34;beta should be &gt;=0 in the F-beta score&#34;)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1544</span> labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
+<span class="ansi-green-fg">   1546</span> # Calculate tp_sum, pred_sum, true_sum ###
+<span class="ansi-green-fg">   1547</span> samplewise = average == &#34;samples&#34;
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\metrics\_classification.py:1348</span>, in <span class="ansi-cyan-fg">_check_set_wise_labels</span><span class="ansi-blue-intense-fg ansi-bold">(y_true, y_pred, average, labels, pos_label)</span>
+<span class="ansi-green-fg">   1345</span> if average not in average_options and average != &#34;binary&#34;:
+<span class="ansi-green-fg">   1346</span>     raise ValueError(&#34;average has to be one of &#34; + str(average_options))
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1348</span> y_type, y_true, y_pred = _check_targets(y_true, y_pred)
+<span class="ansi-green-fg">   1349</span> # Convert to Python primitive type to avoid NumPy type / Python str
+<span class="ansi-green-fg">   1350</span> # comparison. See https://github.com/numpy/numpy/issues/6784
+<span class="ansi-green-fg">   1351</span> present_labels = unique_labels(y_true, y_pred).tolist()
+
+File <span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\anaconda3\lib\site-packages\sklearn\metrics\_classification.py:93</span>, in <span class="ansi-cyan-fg">_check_targets</span><span class="ansi-blue-intense-fg ansi-bold">(y_true, y_pred)</span>
+<span class="ansi-green-fg">     90</span>     y_type = {&#34;multiclass&#34;}
+<span class="ansi-green-fg">     92</span> if len(y_type) &gt; 1:
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 93</span>     raise ValueError(
+<span class="ansi-green-fg">     94</span>         &#34;Classification metrics can&#39;t handle a mix of {0} and {1} targets&#34;.format(
+<span class="ansi-green-fg">     95</span>             type_true, type_pred
+<span class="ansi-green-fg">     96</span>         )
+<span class="ansi-green-fg">     97</span>     )
+<span class="ansi-green-fg">     99</span> # We can&#39;t have more than one value on y_type =&gt; The set is no more needed
+<span class="ansi-green-fg">    100</span> y_type = y_type.pop()
+
+<span class="ansi-red-intense-fg ansi-bold">ValueError</span>: Classification metrics can&#39;t handle a mix of continuous-multioutput and binary targets</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">knc</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.83975</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+
+
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">Y_pred_knc</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\Downloads\capstone_project\_notebooks\modelling.ipynb Cell 21</span> in <span class="ansi-cyan-fg">&lt;cell line: 4&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000015?line=0&#39;&gt;1&lt;/a&gt;</span> from sklearn.metrics import plot_confusion_matrix
+<span class="ansi-green-intense-fg ansi-bold">----&gt; &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000015?line=3&#39;&gt;4&lt;/a&gt;</span> plot_confusion_matrix(Y_pred_knc, y_test)
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;Y_pred_knc&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+
+<span class="n">SVM_model</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">()</span>
+<span class="n">SVM_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">Y_pred_svm</span> <span class="o">=</span> <span class="n">SVM_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The TRAIN classification accuracy is: </span><span class="si">{</span><span class="n">SVM_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">Y_pred_svm</span><span class="p">)</span>
+<span class="n">accuracy_svm</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">Y_pred_svm</span><span class="p">)</span>
+<span class="n">accuracy_svm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">counter</span><span class="o">=</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\Downloads\capstone_project\_notebooks\modelling.ipynb Cell 19</span> in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/modelling.ipynb#ch0000018?line=0&#39;&gt;1&lt;/a&gt;</span> counter=Counter(y)
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;Counter&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/capstone_project/2022/08/02/modelling.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/capstone_project/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/capstone_project/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/capstone_project/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/capstone_project/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/capstone_project/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
