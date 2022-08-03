@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      6 min read
     
 </span></p>
 
@@ -130,9 +130,9 @@ window.onload = wrap_img;
 <h2 id="Notebook-2---EDA">Notebook 2 - EDA<a class="anchor-link" href="#Notebook-2---EDA"> </a></h2><p><strong>Exploring the data</strong></p>
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents"> </a></h2><ol>
 <li><a href="#a1"><strong>Exploratory Data Analysis</strong></a><br />
- 1.2 <a href="#a1.2">Data Collection</a><br />
- 1.3 <a href="#a2.1">Data and Column Descriptions</a><br />
- 1.4 <a href="#a2.2">Data Dictionary</a></li>
+ 1.1 <a href="#a1.2">Overview of Data</a><br />
+ 1.2 <a href="#a2.1">Data and Column Descriptions</a><br />
+ 1.3 <a href="#a2.2">Data Dictionary</a></li>
 </ol>
 
 </div>
@@ -549,7 +549,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span>
 </pre></div>
 
     </div>
@@ -885,7 +885,9 @@ window.onload = wrap_img;
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Target-column---default">Target column - default<a class="anchor-link" href="#Target-column---default"> </a></h4>
+<h4 id="Target-column---DEFAULT">Target column - DEFAULT<a class="anchor-link" href="#Target-column---DEFAULT"> </a></h4><h5 id="Initial-expectations">Initial expectations<a class="anchor-link" href="#Initial-expectations"> </a></h5><p>Looking at the target column we know it only has 2 values - default on payment next month? Yes or no. I am contructing a pie chart to see the distribution of the column. I expect the data to be leaning towards more non-defaulters i.e 0 values. As people do tend to pay thier credit card bills on time usually to avoid late fee's encurring or debt which can be exorbitant depending on company policy (unless there is a major economic event like recession).</p>
+<p>However it is hard to say what percentage of a split we will see as it could be 60:40, 55:45, 70:30 etc.</p>
+
 </div>
 </div>
 </div>
@@ -899,6 +901,7 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">colours</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;Set2&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 
 <span class="p">(</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;pie&#39;</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.0f%%</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="n">colours</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">startangle</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="c1"># plot using value counts and normalise as it shows us the distribution as a percentage of the whole column</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;0:Not default&#39;</span><span class="p">,</span><span class="s1">&#39;1: Default&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Default on payment next month?&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1107,15 +1110,16 @@ Name: LIMIT_BAL, dtype: float64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Marriage, Age, and Sex</span>
-<span class="k">def</span> <span class="nf">boxplot_variation</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">feature3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span>
+<span class="c1"># Marriage, Age, and Sex</span>
+<span class="k">def</span> <span class="nf">boxplot_comparison</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">feature3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">feature2</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">feature3</span><span class="p">,</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">feature2</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
                     <span class="n">data</span><span class="o">=</span><span class="n">credit_df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;pastel&#39;</span><span class="p">)</span>
     <span class="c1">#s.set_xticklabels(s.get_xticklabels(), rotation=90)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 
-<span class="n">boxplot_variation</span><span class="p">(</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;SEX&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">boxplot_comparison</span><span class="p">(</span><span class="s1">&#39;MARRIAGE_SINGLE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1148,7 +1152,7 @@ Name: LIMIT_BAL, dtype: float64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boxplot_variation</span><span class="p">(</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">,</span> <span class="s1">&#39;LIMIT_BAL&#39;</span><span class="p">,</span> <span class="s1">&#39;DEFAULT&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boxplot_comparison</span><span class="p">(</span><span class="s1">&#39;EDUCATION_&#39;</span><span class="p">,</span> <span class="s1">&#39;LIMIT_BAL&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1391,6 +1395,12 @@ Name: LIMIT_BAL, dtype: float64</pre>
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Correlation">Correlation<a class="anchor-link" href="#Correlation"> </a></h3>
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
