@@ -1,0 +1,2436 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Predicting Credit Card Payment Default | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Predicting Credit Card Payment Default" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://apayal.github.io/capstone_project/2022/08/02/Data_cleaning.html" />
+<meta property="og:url" content="https://apayal.github.io/capstone_project/2022/08/02/Data_cleaning.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-02T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Predicting Credit Card Payment Default" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-02T00:00:00-05:00","datePublished":"2022-08-02T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Predicting Credit Card Payment Default","mainEntityOfPage":{"@type":"WebPage","@id":"https://apayal.github.io/capstone_project/2022/08/02/Data_cleaning.html"},"url":"https://apayal.github.io/capstone_project/2022/08/02/Data_cleaning.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/capstone_project/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://apayal.github.io/capstone_project/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/capstone_project/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/capstone_project/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/capstone_project/about/">About Me</a><a class="page-link" href="/capstone_project/search/">Search</a><a class="page-link" href="/capstone_project/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Predicting Credit Card Payment Default</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-02T00:00:00-05:00" itemprop="datePublished">
+        Aug 2, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      13 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/apayal/capstone_project/tree/master/_notebooks/Data_cleaning.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/capstone_project/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/apayal/capstone_project/master?filepath=_notebooks%2FData_cleaning.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/capstone_project/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/apayal/capstone_project/blob/master/_notebooks/Data_cleaning.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/capstone_project/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fapayal%2Fcapstone_project%2Fblob%2Fmaster%2F_notebooks%2FData_cleaning.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/capstone_project/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/Data_cleaning.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notebook-1:-Loading-and-Cleaning-Data">Notebook 1: Loading and Cleaning Data<a class="anchor-link" href="#Notebook-1:-Loading-and-Cleaning-Data"> </a></h2><p><strong>Steps to load, clean, and analyze the data upon first inspection.</strong></p>
+<hr />
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents"> </a></h2><ol>
+<li><p><a href="#a1"><strong>Introduction</strong></a><br />
+ 1.1 <a href="#a1.1">Problem Statement</a><br />
+ 1.2 <a href="#a1.2">Data Collection</a><br /></p>
+</li>
+<li><p><a href="#a2"><strong>Loading &amp; Checking</strong></a><br />
+ 2.1 <a href="#a2.1">Data and Column Descriptions</a><br />
+ 2.2 <a href="#a2.2">Data Dictionary</a></p>
+</li>
+<li><p><a href="#a3"><strong>Investigate Columns</strong></a><br />
+ 3.1.<a href="#a3.1">Correcting Column names</a><br />
+ 3.2.<a href="#a3.2">Clean unknown values </a><br /></p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction-">Introduction <a id="a1" /><a class="anchor-link" href="#Introduction-"> </a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Business-Question-">Business Question <a id="a1.1" /><a class="anchor-link" href="#Business-Question-"> </a></h3><h4 id="Can-we-accurately-predict-the-probability-of-a-customer-defaulting-on-their-payments?">Can we accurately predict the probability of a customer defaulting on their payments?<a class="anchor-link" href="#Can-we-accurately-predict-the-probability-of-a-customer-defaulting-on-their-payments?"> </a></h4><h3 id="Data-collection">Data collection<a class="anchor-link" href="#Data-collection"> </a></h3><hr />
+<p><strong>Importing Libraries</strong></p>
+<p>First we must import libraries we need to clean and analyse the data.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h2 id="Loading-&amp;-Checking-Data-">Loading &amp; Checking Data <a id="a2" /><a class="anchor-link" href="#Loading-&amp;-Checking-Data-"> </a></h2><h3 id="Data-and-Column-Description">Data and Column Description<a class="anchor-link" href="#Data-and-Column-Description"> </a></h3><p>Let's take a closer look at the data, before doing any analysis.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\Robin\Downloads\capstone_project\_data\taiwan_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;We have </span><span class="si">{</span><span class="n">credit_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows and </span><span class="si">{</span><span class="n">credit_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns in the dataset.&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>We have 30000 rows and 25 columns in the dataset.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\Downloads\capstone_project\_notebooks\Data_cleaning.ipynb Cell 11</span> in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/Data_cleaning.ipynb#ch0000012?line=0&#39;&gt;1&lt;/a&gt;</span> #a snapshot of the first few rows
+<span class="ansi-green-intense-fg ansi-bold">----&gt; &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/Data_cleaning.ipynb#ch0000012?line=1&#39;&gt;2&lt;/a&gt;</span> credit_df.head()
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;credit_df&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span> <span class="c1"># last 5 rows</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>LIMIT_BAL</th>
+      <th>SEX</th>
+      <th>EDUCATION</th>
+      <th>MARRIAGE</th>
+      <th>AGE</th>
+      <th>PAY_0</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>...</th>
+      <th>BILL_AMT4</th>
+      <th>BILL_AMT5</th>
+      <th>BILL_AMT6</th>
+      <th>PAY_AMT1</th>
+      <th>PAY_AMT2</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+      <th>default payment next month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>29995</th>
+      <td>29996</td>
+      <td>220000</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>88004</td>
+      <td>31237</td>
+      <td>15980</td>
+      <td>8500</td>
+      <td>20000</td>
+      <td>5003</td>
+      <td>3047</td>
+      <td>5000</td>
+      <td>1000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29996</th>
+      <td>29997</td>
+      <td>150000</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>43</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>...</td>
+      <td>8979</td>
+      <td>5190</td>
+      <td>0</td>
+      <td>1837</td>
+      <td>3526</td>
+      <td>8998</td>
+      <td>129</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29997</th>
+      <td>29998</td>
+      <td>30000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>37</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>...</td>
+      <td>20878</td>
+      <td>20582</td>
+      <td>19357</td>
+      <td>0</td>
+      <td>0</td>
+      <td>22000</td>
+      <td>4200</td>
+      <td>2000</td>
+      <td>3100</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29998</th>
+      <td>29999</td>
+      <td>80000</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>41</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>52774</td>
+      <td>11855</td>
+      <td>48944</td>
+      <td>85900</td>
+      <td>3409</td>
+      <td>1178</td>
+      <td>1926</td>
+      <td>52964</td>
+      <td>1804</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29999</th>
+      <td>30000</td>
+      <td>50000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>46</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>36535</td>
+      <td>32428</td>
+      <td>15313</td>
+      <td>2078</td>
+      <td>1800</td>
+      <td>1430</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h2 id="Data-dictionary-">Data dictionary <a id="a1" /><a class="anchor-link" href="#Data-dictionary-"> </a></h2><p><table>
+  <tr>
+    <th style="text-align: left; background: lightgrey">Column Name</th>
+    <th style="text-align: left; background: lightgrey">Column Contents</th>
+  </tr>
+  <tr>
+    <td style="text-align: left">ID&lt;/th&gt;
+    <td style="text-align: left">ID of each client&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">LIMIT_BAL&lt;/th&gt;
+    <td style="text-align: left">Amount of given credit in NT dollars (includes individual and family/supplementary credit)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">SEX&lt;/th&gt;
+    <td style="text-align: left">Gender (1=male, 2=female)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">EDUCATION&lt;/th&gt;
+    <td style="text-align: left">Level of education(1=graduate school, 2=university, 3=high school, 4=others, 5=unknown, 6=unknown)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">MARRIAGE&lt;/th&gt;
+    <td style="text-align: left">Marital status (1=married, 2=single, 3=others)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">AGE&lt;/th&gt;
+    <td style="text-align: left">Age in years&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">PAY_0&lt;/th&gt;
+    <td style="text-align: left">Repayment status in September, 2005 (-1=pay duly, 1=payment delay for one month, 2=payment delay for two months, 
+    … 8=payment delay for eight months, 9=payment delay for nine months and above)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">PAY_2&lt;/th&gt;
+    <td style="text-align: left">Repayment status in August, 2005 (scale same as above)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">PAY_3&lt;/th&gt;
+    <td style="text-align: left">Repayment status in July, 2005 (scale same as above)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">PAY_4&lt;/th&gt;
+    <td style="text-align: left">Repayment status in June, 2005 (scale same as above)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">PAY_5&lt;/th&gt;
+    <td style="text-align: left">Repayment status in May, 2005 (scale same as above)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">PAY_6&lt;/th&gt;
+    <td style="text-align: left">Repayment status in April, 2005 (scale same as above)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">BILL_AMT1&lt;/th&gt;
+    <td style="text-align: left">Amount of bill statement in September, 2005 (NT dollar)&lt;/th&gt;
+  <tr>&lt;/p&gt;
+<p><tr>
+    <td style="text-align: left">BILL_AMT2&lt;/th&gt;
+    <td style="text-align: left">Amount of bill statement in August, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">BILL_AMT3&lt;/th&gt;
+    <td style="text-align: left">Amount of bill statement in July, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">BILL_AMT4&lt;/th&gt;
+    <td style="text-align: left">Amount of bill statement in June, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">BILL_AMT5&lt;/th&gt;
+    <td style="text-align: left">Amount of bill statement in May, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">BILL_AMT6&lt;/th&gt;
+    <td style="text-align: left">Amount of bill statement in April, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+  <tr>
+    <td style="text-align: left">PAY_AMT1&lt;/th&gt;
+    <td style="text-align: left">Amount of previous payment in September, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+ <tr>
+    <td style="text-align: left">PAY_AMT2&lt;/th&gt;
+    <td style="text-align: left">Amount of previous payment in August, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+   <tr>
+    <td style="text-align: left">PAY_AMT3&lt;/th&gt;
+    <td style="text-align: left">Amount of previous payment in July, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+ <tr>
+    <td style="text-align: left">PAY_AMT4&lt;/th&gt;
+    <td style="text-align: left">Amount of previous payment in June, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+   <tr>
+    <td style="text-align: left">PAY_AMT5&lt;/th&gt;
+    <td style="text-align: left">Amount of previous payment in May, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+ <tr>
+    <td style="text-align: left">PAY_AMT6&lt;/th&gt;
+    <td style="text-align: left">Amount of previous payment in April, 2005 (NT dollar)&lt;/th&gt;
+  <tr>
+ <tr>
+    <td style="text-align: left">default.payment.next.month&lt;/th&gt;
+    <td style="text-align: left">Default payment (1=yes, 0=no)&lt;/th&gt;
+  <tr>
+&lt;/table&gt;
+<br />&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h2 id="Data-cleaning-and-preprocessing">Data cleaning and preprocessing<a class="anchor-link" href="#Data-cleaning-and-preprocessing"> </a></h2><p><strong>Dataset Summary Information</strong></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>ID                            0
+LIMIT_BAL                     0
+SEX                           0
+EDUCATION                     0
+MARRIAGE                      0
+AGE                           0
+PAY_0                         0
+PAY_2                         0
+PAY_3                         0
+PAY_4                         0
+PAY_5                         0
+PAY_6                         0
+BILL_AMT1                     0
+BILL_AMT2                     0
+BILL_AMT3                     0
+BILL_AMT4                     0
+BILL_AMT5                     0
+BILL_AMT6                     0
+PAY_AMT1                      0
+PAY_AMT2                      0
+PAY_AMT3                      0
+PAY_AMT4                      0
+PAY_AMT5                      0
+PAY_AMT6                      0
+default payment next month    0
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">columns</span>
+<span class="c1">#pd.DataFrame(credit_df.columns)</span>
+<span class="c1">#looking at columns names to check all the column names are appropriate</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;,
+       &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;,
+       &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;,
+       &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;,
+       &#39;default payment next month&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The columns PAY_0-PAY_6 are not very intuitive columns names. These columns represent the repayment history of the customer, so we can rename them to something like HIST_PAY1.
+The sixth column starts at PAY_0 but then skips to PAY_2. Looking at the other columns in a group such as BILL_AMT and PAY_AMT they all start at 1 and go up to 6. So we need to rename the column PAY_0 as PAY_1 so it has the same format as the other columns and avoid confusion.</p>
+<p>Default payment next month is the target column i.e the one we want to predict. This column name should also be changed for easier access,reference and most importantly so it follows the same uniform naming convention as the other columns - 1 or 2 words in capitals that succinctly describes the data contained in the column.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_column_names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PAY_0&#39;</span><span class="p">:</span> <span class="s1">&#39;PAY_1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;default payment next month&#39;</span><span class="p">:</span><span class="s1">&#39;DEFAULT&#39;</span>
+        <span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">new_column_names</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 30000 entries, 0 to 29999
+Data columns (total 25 columns):
+ #   Column     Non-Null Count  Dtype
+---  ------     --------------  -----
+ 0   ID         30000 non-null  int64
+ 1   LIMIT_BAL  30000 non-null  int64
+ 2   SEX        30000 non-null  int64
+ 3   EDUCATION  30000 non-null  int64
+ 4   MARRIAGE   30000 non-null  int64
+ 5   AGE        30000 non-null  int64
+ 6   PAY_1      30000 non-null  int64
+ 7   PAY_2      30000 non-null  int64
+ 8   PAY_3      30000 non-null  int64
+ 9   PAY_4      30000 non-null  int64
+ 10  PAY_5      30000 non-null  int64
+ 11  PAY_6      30000 non-null  int64
+ 12  BILL_AMT1  30000 non-null  int64
+ 13  BILL_AMT2  30000 non-null  int64
+ 14  BILL_AMT3  30000 non-null  int64
+ 15  BILL_AMT4  30000 non-null  int64
+ 16  BILL_AMT5  30000 non-null  int64
+ 17  BILL_AMT6  30000 non-null  int64
+ 18  PAY_AMT1   30000 non-null  int64
+ 19  PAY_AMT2   30000 non-null  int64
+ 20  PAY_AMT3   30000 non-null  int64
+ 21  PAY_AMT4   30000 non-null  int64
+ 22  PAY_AMT5   30000 non-null  int64
+ 23  PAY_AMT6   30000 non-null  int64
+ 24  DEFAULT    30000 non-null  int64
+dtypes: int64(25)
+memory usage: 5.7 MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h3 id="Clean-unknown-values">Clean unknown values<a class="anchor-link" href="#Clean-unknown-values"> </a></h3><p>Lets focus on cleaning and checking for inconsistencies in the demographic columns of the dataset first.</p>
+<p><strong>Column: SEX</strong> <br /></p>
+<p>From the data dictionary we already know that sex has the values 1 and 2 representing male and female. However in computing binary values are traditionally represented as 0 and 1, so we will change them.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">c:\Users\Robin\Downloads\capstone_project\_notebooks\Data_cleaning.ipynb Cell 25</span> in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; &lt;a href=&#39;vscode-notebook-cell:/c%3A/Users/Robin/Downloads/capstone_project/_notebooks/Data_cleaning.ipynb#ch0000025?line=0&#39;&gt;1&lt;/a&gt;</span> credit_df[&#39;SEX&#39;].unique()
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;credit_df&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="c1"># check we only have 0 and 1 left</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1    18112
+0    11888
+Name: SEX, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><strong>Column: Education</strong></p>
+<p>Education also has some extra values. We already know there is 2 redundent values of 5 and 6. We have 4 to denote 'unknown' or 'other' education status. We can do a value counts to check if there are additional unknown values and if there are then we can also assign them to 4.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    46.766667
+1    35.283333
+3    16.390000
+5     0.933333
+4     0.410000
+6     0.170000
+0     0.046667
+Name: EDUCATION, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">4</span> <span class="p">)</span>
+<span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> 
+<span class="c1"># now do get dummies so we only have 3 columns left</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    46.766667
+1    35.283333
+3    16.390000
+4     1.560000
+Name: EDUCATION, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There is actually 3 unknown values: 0,5,6. We can map these to the value 4 to refer to other either instituations or other unknown place of study.</p>
+<p>However upon doing some external reseach, I found that Taiwan has a very high percentage of education completion in general. In fact around 94.7% of people have passed high school and gone onto some sort of higher education or senior vocational course . Based on this information, it is safe to assume that the unknown values and other category can be grouped together in the value 3, as it is highly likely that these people have passed high school at very the least.
+Additionally since adding the 3 unknown values to 4 gives us 468 values which accounts for less than 1.56% of the entire column it is insignificant in making predictions which means it can only contribute to making models more computationally expensive to compute.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">education_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">education_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EDUCATION_4&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">education_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Education_1</th>
+      <th>Education_2</th>
+      <th>Education_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29995</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29996</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29997</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29998</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29999</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>30000 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">education_df</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Education_1  Education_2  Education_3
+0            1            0              14030
+1            0            0              10585
+0            0            1               4917
+                          0                468
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><strong>Column: Marriage</strong></p>
+<p>This also has 1 unknown value of 0, which we can change to 3 (others)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    15964
+1    13659
+3      323
+0       54
+Name: MARRIAGE, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2    53.213333
+1    45.530000
+3     1.256667
+Name: MARRIAGE, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Married and single can essentially be represented as 1 columns of married or not. Although value 3 only accounts for 1.25% of the column we can at the moment have a separate column for it but later when we do PCA or feature engineering I suspect it will be unimportant in predictions ans thus will be removed or not included in the modelling.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0        1
+1        2
+2        2
+3        1
+4        1
+        ..
+29995    1
+29996    2
+29997    2
+29998    1
+29999    1
+Name: MARRIAGE, Length: 30000, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">marriage_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">credit_df</span><span class="p">[</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">],</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;Marital_status&#39;</span><span class="p">,</span><span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">marriage_df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Marital_status_2</th>
+      <th>Marital_status_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29995</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29996</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29997</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29998</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29999</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>30000 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have removed the first column as the second column represents 0 for Married people and 1 for sinlge people. Maritial status_3 represents any another values.</p>
+<hr />
+<p><strong>Putting back the cleaned data into 1 DataFrame</strong></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">credit_df</span><span class="p">,</span><span class="n">education_df</span><span class="p">,</span> <span class="n">marriage_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">credit_df_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>LIMIT_BAL</th>
+      <th>SEX</th>
+      <th>EDUCATION</th>
+      <th>MARRIAGE</th>
+      <th>AGE</th>
+      <th>PAY_1</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>...</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+      <th>DEFAULT</th>
+      <th>Education_1</th>
+      <th>Education_2</th>
+      <th>Education_3</th>
+      <th>Marital_status_2</th>
+      <th>Marital_status_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>20000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>24</td>
+      <td>2</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>120000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>26</td>
+      <td>-1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>2000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>90000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>5000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>50000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>37</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1200</td>
+      <td>1100</td>
+      <td>1069</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>50000</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>57</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10000</td>
+      <td>9000</td>
+      <td>689</td>
+      <td>679</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rename_col</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Education_1&#39;</span><span class="p">:</span> <span class="s1">&#39;Education_higher&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Education_2&#39;</span><span class="p">:</span><span class="s1">&#39;Education_university&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Education_3&#39;</span><span class="p">:</span><span class="s1">&#39;Education_highschool&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Marital_status_2&#39;</span><span class="p">:</span><span class="s1">&#39;Marriage_Single&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Marital_status_3&#39;</span><span class="p">:</span><span class="s1">&#39;Marriage_Other&#39;</span>
+        <span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">rename_col</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">credit_df_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>LIMIT_BAL</th>
+      <th>SEX</th>
+      <th>EDUCATION</th>
+      <th>MARRIAGE</th>
+      <th>AGE</th>
+      <th>PAY_1</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>...</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+      <th>DEFAULT</th>
+      <th>Education_higher</th>
+      <th>Education_university</th>
+      <th>Education_highschool</th>
+      <th>Marriage_Single</th>
+      <th>Marriage_Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>20000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>24</td>
+      <td>2</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>120000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>26</td>
+      <td>-1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>2000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>90000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>5000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>50000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>37</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1200</td>
+      <td>1100</td>
+      <td>1069</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>50000</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>57</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10000</td>
+      <td>9000</td>
+      <td>689</td>
+      <td>679</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span><span class="o">=</span><span class="n">credit_df_clean</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">,</span><span class="s1">&#39;MARRIAGE&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>LIMIT_BAL</th>
+      <th>SEX</th>
+      <th>AGE</th>
+      <th>PAY_1</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>PAY_5</th>
+      <th>PAY_6</th>
+      <th>...</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+      <th>DEFAULT</th>
+      <th>Education_higher</th>
+      <th>Education_university</th>
+      <th>Education_highschool</th>
+      <th>Marriage_Single</th>
+      <th>Marriage_Other</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>20000</td>
+      <td>1</td>
+      <td>24</td>
+      <td>2</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-2</td>
+      <td>-2</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>120000</td>
+      <td>1</td>
+      <td>26</td>
+      <td>-1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>...</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>2000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>90000</td>
+      <td>1</td>
+      <td>34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>5000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>50000</td>
+      <td>1</td>
+      <td>37</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1200</td>
+      <td>1100</td>
+      <td>1069</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>50000</td>
+      <td>0</td>
+      <td>57</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>10000</td>
+      <td>9000</td>
+      <td>689</td>
+      <td>679</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29995</th>
+      <td>29996</td>
+      <td>220000</td>
+      <td>0</td>
+      <td>39</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>5003</td>
+      <td>3047</td>
+      <td>5000</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29996</th>
+      <td>29997</td>
+      <td>150000</td>
+      <td>0</td>
+      <td>43</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>8998</td>
+      <td>129</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29997</th>
+      <td>29998</td>
+      <td>30000</td>
+      <td>0</td>
+      <td>37</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>22000</td>
+      <td>4200</td>
+      <td>2000</td>
+      <td>3100</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29998</th>
+      <td>29999</td>
+      <td>80000</td>
+      <td>0</td>
+      <td>41</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>...</td>
+      <td>1178</td>
+      <td>1926</td>
+      <td>52964</td>
+      <td>1804</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29999</th>
+      <td>30000</td>
+      <td>50000</td>
+      <td>0</td>
+      <td>46</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1430</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>30000 rows × 28 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p><strong>Column: PAY columns values</strong></p>
+<p>The PAY_ columns range is actually -2 to 8 whereas in the dictionary it said -1 to 9. Let us make it 0-10 instead so all values are positive but the range and what it represents is unchanged.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_pay_col</span><span class="o">=</span><span class="n">credit_df_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">credit_df_pay_col</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">credit_df_clean</span><span class="p">[</span><span class="n">month</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">credit_df_clean</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="n">credit_df_clean</span><span class="p">[</span><span class="n">month</span><span class="p">]</span><span class="o">=</span><span class="n">credit_df_clean</span><span class="p">[</span><span class="n">month</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span>
+<span class="c1">#                       inplace=True)</span>
+
+
+<span class="n">credit_df_clean</span><span class="p">[</span><span class="s1">&#39;PAY_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h3 id="Saving-the-work">Saving the work<a class="anchor-link" href="#Saving-the-work"> </a></h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#credit_df_clean.to_csv(&#39;credit_df_dataset_cleaned.csv&#39;, index=False) # the index column will not be saved</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h3 id="Ending-notes">Ending notes<a class="anchor-link" href="#Ending-notes"> </a></h3><p>In this notebook, I have mainly changed column names to more suitable names, reassign unknown values in column. Much of the data was originally categorical data that was transformed into ascending order values. However as this could be misinterpreted as values are ordinal. So re-encoding the categorical values into binary 0 and 1 was essential.</p>
+<p>The next steps are to start doing some inital EDA on the dataset to see what initial insights we can gain.</p>
+<hr />
+
+</div>
+</div>
+</div>
+&lt;/div&gt;
+ 
+
+</tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></p></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></tr></td></td></tr></table></p></div></div></div></div>
+
+
+  </div><a class="u-url" href="/capstone_project/2022/08/02/Data_cleaning.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/capstone_project/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/capstone_project/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/capstone_project/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/capstone_project/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/capstone_project/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
