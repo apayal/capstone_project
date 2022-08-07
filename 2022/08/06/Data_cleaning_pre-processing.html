@@ -10,15 +10,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
 <meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://apayal.github.io/capstone_project/2022/08/04/Data_cleaning_pre-processing.html" />
-<meta property="og:url" content="https://apayal.github.io/capstone_project/2022/08/04/Data_cleaning_pre-processing.html" />
+<link rel="canonical" href="https://apayal.github.io/capstone_project/2022/08/06/Data_cleaning_pre-processing.html" />
+<meta property="og:url" content="https://apayal.github.io/capstone_project/2022/08/06/Data_cleaning_pre-processing.html" />
 <meta property="og:site_name" content="fastpages" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-08-04T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-08-06T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Predicting Credit Card Payment Default" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-04T00:00:00-05:00","datePublished":"2022-08-04T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Predicting Credit Card Payment Default","mainEntityOfPage":{"@type":"WebPage","@id":"https://apayal.github.io/capstone_project/2022/08/04/Data_cleaning_pre-processing.html"},"url":"https://apayal.github.io/capstone_project/2022/08/04/Data_cleaning_pre-processing.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-06T00:00:00-05:00","datePublished":"2022-08-06T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Predicting Credit Card Payment Default","mainEntityOfPage":{"@type":"WebPage","@id":"https://apayal.github.io/capstone_project/2022/08/06/Data_cleaning_pre-processing.html"},"url":"https://apayal.github.io/capstone_project/2022/08/06/Data_cleaning_pre-processing.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/capstone_project/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://apayal.github.io/capstone_project/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/capstone_project/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -73,13 +73,13 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Predicting Credit Card Payment Default</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-04T00:00:00-05:00" itemprop="datePublished">
-        Aug 4, 2022
+    <h1 class="post-title p-name" itemprop="name headline">Predicting Credit Card Payment Default</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-06T00:00:00-05:00" itemprop="datePublished">
+        Aug 6, 2022
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      13 min read
+      15 min read
     
 </span></p>
 
@@ -137,7 +137,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents"> </a></h2><ol>
 <li><p><a href="#a1"><strong>Introduction</strong></a><br />
- 1.1 <a href="#a1.1">Problem Statement</a><br />
+ 1.1 <a href="#a1.1">Business Question</a><br />
  1.2 <a href="#a1.2">Data Collection</a><br /></p>
 </li>
 <li><p><a href="#a2"><strong>Loading &amp; Checking</strong></a><br />
@@ -161,7 +161,15 @@ window.onload = wrap_img;
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Business-Question-">Business Question <a id="a1.1" /><a class="anchor-link" href="#Business-Question-"> </a></h3><h4 id="Can-we-accurately-predict-the-probability-of-a-customer-defaulting-on-their-payments?">Can we accurately predict the probability of a customer defaulting on their payments?<a class="anchor-link" href="#Can-we-accurately-predict-the-probability-of-a-customer-defaulting-on-their-payments?"> </a></h4><h3 id="Data-collection">Data collection<a class="anchor-link" href="#Data-collection"> </a></h3><p>Normally credit risk data is hard to find as it contains private personal details such as marital status, employment status etc. This particular dataset was donated to UCI Machine learning repository, however I initially found it on Kaggle.com. They are both the same but the original on UCI website has a fuller data dictionary of the two.</p>
+<h3 id="Business-Question-">Business Question <a id="a1.1" /><a class="anchor-link" href="#Business-Question-"> </a></h3><h4 id="Can-we-accurately-predict-the-probability-of-a-customer-defaulting-on-their-payments?">Can we accurately predict the probability of a customer defaulting on their payments?<a class="anchor-link" href="#Can-we-accurately-predict-the-probability-of-a-customer-defaulting-on-their-payments?"> </a></h4><h3 id="Context">Context<a class="anchor-link" href="#Context"> </a></h3><p>Credit card are issued by banks or financial companies which allow clients to borrow money to pay for goods or services. Credit card companies maintain vast databases on cardholders and have the condition that cardholders pay back the company on time. Since the companies make the payment on the clients behalf it is in thier best interest that they get thier money back from the cardholders.</p>
+<p>There are a number of ways the issuers makes thier profit but it mainly comes from annual fees to cardholders, transaction fees on purchases or transfers, processor fees but the largest profit portion comes from interest fees. Interest fees are charged when balance on the card is not paid on time. To read more on how these fees are calculated you can read more on the link. <a href="https://www.fool.com/the-ascent/credit-cards/how-do-credit-card-companies-make-money/">How do credit card companies make money</a></p>
+<p>The bottom line is that the fees are calculated based on credit risk which is determined by credit history of individual. However with the case of this particular dataset the reality is quite different.</p>
+<h3 id="Data-Background">Data Background<a class="anchor-link" href="#Data-Background"> </a></h3><p>In order to encourage the flow of capital, banks in Taiwan began extensively encouraging the population to apply for credit cards. They lowered the requirements for approvals mainly targeting young people who had not finished schooling , had no job and generally not enough income or financial knowledge beforehand. 
+By february 2006 Taiwan had a credit card devt of $268 billion USD! This led to a range of social issues such as homelessness, violent debt collection esecially towards lower income families and even suicide just because they were not able to pay off the debt. Until the government stepped in to sort the problems and implemented rules that monitered who could be approved for credit cards as well as how much limit they can get.</p>
+<p>This is how we get our main problem statement and business motivation:</p>
+<p>How can we accurately predict the the probability of a customer defaulting especially when we have very limited to no credit history information?</p>
+<p>So in this paricular classification problem our stakeholders are credit card companies whose main motivation is not the accuracy of the prediction model but rather the recall rate. The recall measures the proportion of actual positives that were identified correctly. We  are more interested in the number of false negatives being as low as possible and want the number of True positives to be high as possible. Basically a customer who has been incorrectly predicted as likely to not default when in reality they are likely to default, poses the biggest risk to the bank.</p>
+<h3 id="Data-collection">Data collection<a class="anchor-link" href="#Data-collection"> </a></h3><p>Normally credit card data is hard to find as it contains private personal details such as marital status, employment status etc. This particular dataset was donated to UCI Machine learning repository, however I initially found it on Kaggle.com. They are both the same but the original on UCI website has a fuller data dictionary of the two.</p>
 <p>You can view the original data from <a href="https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients">here</a></p>
 <h3 id="Dataset-Information">Dataset Information<a class="anchor-link" href="#Dataset-Information"> </a></h3><p>This dataset contains information on default payments, demographic factors, credit data, history of payment, and bill statements of credit card clients in Taiwan from April 2005 to September 2005.</p>
 <hr />
@@ -2378,7 +2386,7 @@ Name: MARRIAGE, Length: 30000, dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#credit_df_clean.to_csv(&#39;credit_df_dataset_cleaned.csv&#39;, index=False) # the index column will not be saved</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">credit_df_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;credit_df_dataset_cleaned.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># the index column will not be saved</span>
 </pre></div>
 
     </div>
@@ -2394,6 +2402,8 @@ Name: MARRIAGE, Length: 30000, dtype: int64</pre>
 <h3 id="Ending-notes">Ending notes<a class="anchor-link" href="#Ending-notes"> </a></h3><p>In this notebook, I have mainly changed column names to more suitable names, reassign unknown values in column. Much of the data was originally categorical data that was transformed into ascending order values. However as this could be misinterpreted as values are ordinal. So re-encoding the categorical values into binary 0 and 1 was essential.</p>
 <p>The next steps are to start doing some inital EDA on the dataset to see what initial insights we can gain.</p>
 <hr />
+<h3 id="References">References<a class="anchor-link" href="#References"> </a></h3><p><a href="https://sevenpillarsinstitute.org/case-studies/taiwans-credit-card-crisis/">https://sevenpillarsinstitute.org/case-studies/taiwans-credit-card-crisis/</a>
+<a href="https://www.fool.com/the-ascent/credit-cards/how-do-credit-card-companies-make-money/">https://www.fool.com/the-ascent/credit-cards/how-do-credit-card-companies-make-money/</a></p>
 
 </div>
 </div>
@@ -2404,7 +2414,7 @@ Name: MARRIAGE, Length: 30000, dtype: int64</pre>
 </tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></p></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></p></tr></td></td></tr></tr></td></td></tr></table></p></div></div></div></div>
 
 
-  </div><a class="u-url" href="/capstone_project/2022/08/04/Data_cleaning_pre-processing.html" hidden></a>
+  </div><a class="u-url" href="/capstone_project/2022/08/06/Data_cleaning_pre-processing.html" hidden></a>
 </article>
 
       </div>
