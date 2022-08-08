@@ -1,0 +1,7 @@
+Models,Accuracy,Recall,Precision,f1-score
+Logistic Regression,0.656,0.656,0.718,0.679
+KNN,0.605,0.605,0.711,0.638
+SVM,0.571,0.571,0.743,0.608
+Decision Tree,0.691,0.691,0.725,0.705
+XGBoost,0.777,0.777,0.768,0.772
+AdaBoost,0.758,0.758,0.767,0.762
